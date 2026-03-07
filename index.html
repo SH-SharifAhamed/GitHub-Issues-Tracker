@@ -9,12 +9,22 @@
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+     <!-- google font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
      <!-- favicon -->
      <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
 
      <!-- tailwind config -->
      <link rel="stylesheet" href="./tailwind.config.js">
 
+     <style>
+     body {
+          font-family: "Geist", sans-serif;
+     }
+     </style>
 
 </head>
 <body class="bg-[#F8FAFC]">
@@ -31,12 +41,12 @@
           
                <fieldset class="fieldset items-center w-xs mx-auto">
                     <label class="label text-[16px] font-bold text-black">Username</label>
-                    <input type="text" class="input" placeholder="Enter Username" />
+                    <input id="username" type="text" class="input" placeholder="Enter Username" />
           
                     <label class="label text-[16px] font-bold text-black">Password</label>
-                    <input type="password" class="input" placeholder="Enter Password" />
+                    <input id="password" type="password" class="input" placeholder="Enter Password" />
           
-                    <button class="btn btn-primary mt-4 text-[16px] font-bold transition duration-300 hover:bg-blue-600 hover:text-white">Sign In</button>
+                    <button id="login-btn" class="btn btn-primary mt-4 text-[16px] font-bold transition duration-300 hover:bg-blue-600 hover:text-white">Sign In</button>
                </fieldset>
           
                <div class="flex items-center justify-center mt-6">
@@ -52,7 +62,7 @@
                </div>
           </div>
      </section>
-     
-     
+
+     <script src="script/login.js"></script>
 </body>
 </html>
