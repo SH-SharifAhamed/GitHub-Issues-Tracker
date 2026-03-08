@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,12 @@
      <!-- daisyUI and Tailwind CSS cdn links -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     
+
      <!-- google font link -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-     
+
      <!-- font awesome cdn link -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
           integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
@@ -22,16 +23,17 @@
 
      <!-- favicon -->
      <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
-     
+
      <!-- tailwind config -->
      <link rel="stylesheet" href="./tailwind.config.js">
-     
+
      <style>
           body {
                font-family: "Geist", sans-serif;
           }
      </style>
 </head>
+
 <body class="bg-[#F8FAFC]">
      <!-- navgation bar -->
      <nav class="navbar bg-base-100 shadow-sm">
@@ -43,9 +45,9 @@
           </div>
           <div class="flex gap-2">
                <input id="search-input" type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-               <div class="dropdown dropdown-end">
-               <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+               <div id="searchCardContainer" class="dropdown dropdown-end">
                </div>
+               <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
           </div>
      </nav>
 
@@ -70,27 +72,37 @@
                </div>
           </div>
           <hr>
-          <div class="p-4 mt-4 grid grid-cols-4 gap-4">
-               <div class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+
+
+          <div id="cardContainer" class="p-4 mt-4 grid grid-cols-4 gap-4">
+               <div  class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                     <div class="flex items-center justify-between">
                          <img src="./assets/Open-Status.png" alt="">
                          <div class="badge badge-soft badge-error">Error</div>
                     </div>
                     <div>
                          <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...
+                         </p>
                     </div>
                     <div class="flex items-center gap-4">
                          <div class="badge badge-soft badge-error">Error</div>
                          <div class="badge badge-soft badge-warning">Warning</div>
-                    </div><hr>
+                    </div>
+                    <hr>
                     <div>
                          <p class="text-[#64748B]">#1by john_doe</p>
                          <p class="text-[#64748B]">1/15/2024</p>
                     </div>
                </div>
 
-               <div class="card-2 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+
+               <!-- loading spinner -->
+                <div id="loadingSpinner" class="h-[60vh] hidden fle justify-center items-center">
+                    <span class="loading loading-spinner loading-sm"></span>
+                </div>
+
+               <!-- <div class="card-2 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                     <div class="flex items-center justify-between">
                          <img src="./assets/Open-Status.png" alt="">
                          <div class="badge badge-soft badge-error">Error</div>
@@ -398,16 +410,17 @@
                     <div>
                          <p class="text-[#64748B]">#1by john_doe</p>
                          <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
+                    </div> -->
+               <!-- </div> -->
 
           </div>
-         
+
      </section>
-     
+
 
 
 
      <script src="./script/home.js"></script>
 </body>
+
 </html>
