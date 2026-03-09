@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+   
+     <!-- Navbar -->
+     <!-- <nav class="flex justify-between items-center bg-white shadow px-6 py-4">
+     
+          <div class="flex items-center gap-2">
+               <img src="./assets/github-logo.png" class="w-8">
+               <h1 class="text-xl font-semibold">GitHub Issues Tracker</h1>
+          </div>
+     
+          <div class="flex gap-2">
+               <input id="searchInput" class="border px-3 py-2 rounded-md w-60" placeholder="Search issues">
+     
+               <button class="bg-purple-600 text-white px-4 py-2 rounded-md">
+                    Search
+               </button>
+          </div>
+     
+     </nav> -->
+     
+     <!-- Tabs -->
+     <!-- <div class="bg-white mt-6 p-4 rounded-lg shadow">
+     
+          <div class="flex gap-2">
+     
+               <button id="allBtn" class="px-5 py-2 rounded-md bg-purple-600 text-white">
+                    All
+               </button>
+     
+               <button id="openBtn" class="px-5 py-2 rounded-md bg-gray-100">
+                    Open
+               </button>
+     
+               <button id="closedBtn" class="px-5 py-2 rounded-md bg-gray-100">
+                    Closed
+               </button>
+     
+          </div>
+     
+     </div> -->
+
+     <!-- issues -->
+     <!-- <div class="bg-white mt-4 p-6 rounded-lg shadow flex justify-between items-center">
+     
+          <div class="flex items-center gap-3">
+     
+               <div class="bg-purple-100 p-2 rounded-full">
+                    <img src="./assets/issue-icon.svg" class="w-5">
+               </div>
+     
+               <div>
+                    <h2 class="font-semibold text-lg">50 Issues</h2>
+                    <p class="text-gray-500 text-sm">
+                         Track and manage your project issues
+                    </p>
+               </div>
+     
+          </div>
+     
+          <div class="flex gap-6 text-sm">
+     
+               <div class="flex items-center gap-1">
+                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                    Open
+               </div>
+     
+               <div class="flex items-center gap-1">
+                    <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                    Closed
+               </div>
+     
+          </div>
+     
+     </div> -->
+     
+     <!-- Card Container -->
+     <!-- <div id="cardContainer" class="grid grid-cols-4 gap-4 p-6"></div> -->
+     
+     <!-- Loader -->
+     <!-- <div id="loader" class="text-center hidden">
+          Loading...
+     </div> --> 
+
+
+     <!-- card -->
+     <!-- <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="flex justify-between items-center">
+                         <img src="./assets/Open-Status.png" alt="">
+                         <div class="badge badge-soft badge-error">Error</div>
+                    </div>
+                    <div>
+                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
+                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                         <div class="badge badge-soft badge-error">Error</div>
+                         <div class="badge badge-soft badge-warning">Warning</div>
+                    </div>
+                    <hr>
+                    <div>
+                         <p class="text-[#64748B]">#1by john_doe</p>
+                         <p class="text-[#64748B]">1/15/2024</p>
+                    </div> -->
+
+          <button onclick="loadPost()">Load Posts</button>
+          <ul id="post-container">
+
+          </ul>
+     
+
+     <!-- <script src="./script.js"></script> -->
+     <script>
+          const loadPost = () => {
+               const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+               fetch(url)
+               .then((res) => res.json())
+               .then((data) => {
+                    // console.log(data);
+                    displayPosts(data.data);
+               });
+          };
+
+          const displayPosts = (posts) => {
+               const postContainer = document.getElementById("post-container");
+               console.log(postContainer);
+
+               posts.forEach((post) => {
+                    console.log(post.id);
+               });
+               
+          
+          };
+     </script>
+
+</body>
+</html>

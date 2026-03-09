@@ -63,9 +63,9 @@ function displayIssues(issues) {
           const card = document.createElement("div")
           card.className = "card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300";
 
-          card.innerHTML = `<div class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+          card.innerHTML = `<div  class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                <div class="flex items-center justify-between">
-                    <img src="./assets/Open-Status.png" alt="">
+                    <img  src="./assets/Open-Status.png" alt="">
                          <div class="badge badge-soft badge-error">${issue.priority}</div>
                </div>
                <div>
@@ -90,12 +90,6 @@ function displayIssues(issues) {
 }
 loadIssues();
 
-
-
-
-
-
-
 // allIssues get api
 async function loadIssues() {
      const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
@@ -115,8 +109,47 @@ function updateCount(issues) {
      issuesCount.innerText = `${issues.length} Issues`;
 }
 
-// all Issue golok display korar function
 
+// load single word details
+const loadWordDetail = async(id) => {
+     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+     
+     const res = await fetch(url);
+     const details = await res.json();
+     displayWordDetails(details.data);
+}
+
+const displayWordDetails = (word) => { 
+     console.log(word);
+     const detailsBox = document.getElementById("details-container");
+     detailsBox.innerHTML = ` <h2 class="font-bold">${word.title}</h2>
+                         <div class="flex items-center gap-4 mt-4">
+                              <div class="badge badge-accent">${word.labels.join(", ")}</div>
+                              <div class="text-[#64748B] flex items-center gap-2">
+                                   <p>${word.author}</p>
+                                   <p>${word.createdAt}</p>
+                              </div>
+                         </div>
+                         <div class="flex items-center gap-4 mt-4 mb-4">
+                              <div class="badge badge-outline badge-warning">${word.labels.join(", ")}</div>
+                              <div class="badge badge-outline badge-error">${word.status}</div>
+                         </div>
+                         <p class="text-[#64748B] mb-4">${word.description}</p>
+                         <div class="flex justify-around items-center gap-10 mt-4">
+                              <div>
+                                   <p>Assignee:</p>
+                                   <p>${word.assignee || "Unassigned"}</p>
+                              </div>
+                              <div>
+                                   <p>Priority:</p>
+                                   <div class="badge badge-error">${word.priority}</div>
+                              </div>
+                         </div>`;
+     document.getElementById("word_modal").showModal();
+}
+
+
+// all Issue golok display korar function
 function displayIssues(issues) {
      const cards = document.getElementById("cardContainer");
      cards.innerHTML = ""; 
@@ -125,7 +158,7 @@ function displayIssues(issues) {
           const card = document.createElement("div")
           card.className = "rounded-lg px-4 py-2 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300";
 
-          card.innerHTML = `<div class="rounded-lg mb-4">
+          card.innerHTML = `<div onclick="loadWordDetail(${issue.id})" class="rounded-lg mb-4">
                <div class="flex items-center justify-between">
                     <img src="./assets/Open-Status.png" alt="">
                          <div class="badge badge-soft badge-error">${issue.priority}</div>
@@ -164,4 +197,15 @@ function showClosed() {
      const closedIssues = allIssues.filter(issue => issue.status === "closed");
      displayIssues(closedIssues);
 }
+
+
+
+
+
+
+
+
+// modal Content
+
+
 
