@@ -149,6 +149,8 @@ const displayWordDetails = (word) => {
 }
 
 
+
+
 // all Issue golok display korar function
 function displayIssues(issues) {
      const cards = document.getElementById("cardContainer");
@@ -156,7 +158,14 @@ function displayIssues(issues) {
      issues.forEach((issue) => {
           
           const card = document.createElement("div")
-          card.className = "rounded-lg px-4 py-2 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300";
+          let borderColor = "";
+          if (issue.status === "open") {
+               borderColor = "border-t-4 border-green-500";
+          }
+          else if (issue.status === "closed") { 
+               borderColor = "border-t-4 border-purple-500";
+          }
+          card.className = `rounded-lg px-4 py-2 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 ${borderColor}`;
 
           card.innerHTML = `<div onclick="loadWordDetail(${issue.id})" class="rounded-lg mb-4">
                <div class="flex items-center justify-between">
@@ -213,3 +222,6 @@ document.getElementById("btn-search").addEventListener("click", () => {
 
 });
 
+issue.status.toLowerCase() === 'open'
+     ? 'border-green-500'
+     : 'border-purple-500'
