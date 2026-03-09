@@ -51,18 +51,24 @@
           </div>
      </nav>
 
-     <section class="w-10/12 mx-auto mt-[60px] bg-white shadow-md">
-          <input class="btn text-[#64748B]" type="checkbox" name="frameworks" aria-label="All" />
-          <input class="btn text-[#64748B]" type="checkbox" name="frameworks" aria-label="Open" />
-          <input class="btn text-[#64748B]" type="checkbox" name="frameworks" aria-label="Closed" />
+     <section class="category w-10/12 mx-auto mt-[60px] bg-white shadow-md">
+          <button id="allBtn" class="btn tab-btn bg-[#4A00FF] text-white px-4 py-2 rounded" onclick="showAll()">All</button>
+          <button id="openBtn" class="btn tab-btn bg-gray-200 text-[#64748B] px-4 py-2 rounded" onclick="showOpen()">Open</button>
+          <button id="closedBtn" class="btn tab-btn bg-gray-200 text-[#64748B] px-4 py-2 rounded" onclick="showClosed()">Closed</button>
      </section>
+
+
+
+
+
+
 
      <section class="w-10/12 mx-auto mt-[60px] bg-white shadow-md">
           <div class="flex items-center justify-between p-4">
                <div class="flex items-center gap-4 p-4">
                     <img src="./assets/Aperture.png" alt="">
                     <div>
-                         <h3 class="font-bold">50 Issues</h3>
+                         <h3 id="issueCount" class="font-bold">50 Issues</h3>
                          <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                </div>
@@ -73,345 +79,18 @@
           </div>
           <hr>
 
-
-          <div id="cardContainer" class="p-4 mt-4 grid grid-cols-4 gap-4">
-               <div  class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...
-                         </p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
+          <!-- All card container -->
+          <div class="p-4 mt-4">
+               <!-- <div id="cardContainer" class="card-1 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    
+               </div> -->
+                <div id="cardContainer" class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
 
                <!-- loading spinner -->
-                <div id="loadingSpinner" class="h-[60vh] hidden fle justify-center items-center">
+                <div id="loadingSpinner" class="h-[60vh] hidden flex fle justify-center items-center">
                     <span class="loading loading-spinner loading-sm"></span>
                 </div>
-
-               <!-- <div class="card-2 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-               <div class="card-3 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-4 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-               <div class="flex items-center justify-between">
-                    <img src="./assets/Open-Status.png" alt="">
-                    <div class="badge badge-soft badge-error">Error</div>
-               </div>
-               <div>
-                    <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                    <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-               </div>
-               <div class="flex items-center gap-4">
-                    <div class="badge badge-soft badge-error">Error</div>
-                    <div class="badge badge-soft badge-warning">Warning</div>
-               </div>
-               <hr>
-               <div>
-                    <p class="text-[#64748B]">#1by john_doe</p>
-                    <p class="text-[#64748B]">1/15/2024</p>
-               </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center justify-between">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div>
-               </div>
-
-               <div class="card-5 rounded-lg p-4 mb-4 bg-[#F1F5F9] shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="flex justify-between items-center">
-                         <img src="./assets/Open-Status.png" alt="">
-                         <div class="badge badge-soft badge-error">Error</div>
-                    </div>
-                    <div>
-                         <h3 class="font-bold">Fix navigation menu on mobile devices</h3>
-                         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <div class="badge badge-soft badge-error">Error</div>
-                         <div class="badge badge-soft badge-warning">Warning</div>
-                    </div>
-                    <hr>
-                    <div>
-                         <p class="text-[#64748B]">#1by john_doe</p>
-                         <p class="text-[#64748B]">1/15/2024</p>
-                    </div> -->
-               <!-- </div> -->
+               
 
           </div>
 
